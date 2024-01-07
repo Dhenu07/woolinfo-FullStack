@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
+  "short_name": "Wool Info Heaven",
   "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "68x68 34x34 26x26 18x18",
       "type": "image/x-icon"
     },
     {

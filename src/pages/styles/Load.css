@@ -1,0 +1,20 @@
+.load0{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right,#005238 ,
+    #FFCD00);
+  }
+  .load{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family:"Kavoon";
+      color: #0A4823;
+      line-height: 2px;
+  }
