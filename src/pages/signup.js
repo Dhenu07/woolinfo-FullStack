@@ -28,7 +28,7 @@ function Signup(){
 <div className="overlay-panel overlay-right">
 <h1 className="h1">Welcome Trader!</h1>
  <p className="p">To keep connected with us please login with your personal info</p>
- <Link to="/login"><button>Log in</button></Link>
+ <Link to="/login"><button>SIGN IN</button></Link>
 </div>
 </div>
 </div>

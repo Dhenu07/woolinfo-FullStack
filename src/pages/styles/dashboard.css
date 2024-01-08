@@ -5,14 +5,14 @@
     padding: 0;
     width: 100%;
     height: 100vh;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
     overflow: hidden;
-    background-image: linear-gradient(to bottom right,rgba(255, 255, 255, 0.707),rgba(0, 0, 255, 0.592));
 }
 .sidebar {
     /* flex-basis: 200px; */
     max-width: 15%;
     flex-shrink: 0;
-    background-image:linear-gradient(to bottom, #f9a825, #558b2f); 
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     display: flex;
     flex-direction: column;
     font-size: 15px;
@@ -42,6 +42,7 @@
   .sidebar-list {
     list-style-type: none;
     padding: 0;
+    text-transform: uppercase;
   }
   .sidebar-list-item {
     position: relative;
@@ -49,6 +50,7 @@
   }
   .sidebar-list-item a {
     display: flex;
+    color: white;
     align-items: center;
     width: fit-content;
     padding: 10px;
@@ -56,21 +58,21 @@
     line-height: 24px;
   }
   .sidebar-list-item a:hover{
-    color: white;
+    color: #FFCD00;   
   }
   .sidebar-list-item svg {
     margin-right: 8px;
   }
-  .sidebar-list-item.active {
-    background-color: var(--sidebar-active-link);
+  .sidebar-list-item.active a{
+    color: #FFCD00;   
   }
   .sidebar-list-item.active:before {
     content: "";
     position: absolute;
     right: 0;
-    background-color: aliceblue;
+    background-color:#FFCD00;  
     height: 100%;
-    width: 4px;
+    width: 5px;
   }
   .account-info {
     display: flex;
@@ -116,6 +118,13 @@
     max-height: 100%;
     display: flex;
     flex-direction: column;
+  }
+  span{
+    font-size: 15px;
+  }
+  #feather{
+    background-color: #FFCD00;
+    border-radius: 50%;
   }
   /* .app-content-header {
     display: flex;

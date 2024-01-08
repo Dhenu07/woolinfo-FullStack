@@ -6,8 +6,7 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to bottom right,#005238 ,
-    #FFCD00);
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
   }
   .load{
       display: flex;
@@ -15,6 +14,14 @@
       align-items: center;
       flex-direction: column;
       font-family:"Kavoon";
-      color: #0A4823;
+      color: white;
       line-height: 2px;
+  }
+  #temp{
+    color: #FFCD00;
+  }
+  #nex{
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
   }

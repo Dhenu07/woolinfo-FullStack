@@ -23,13 +23,13 @@ function Load() {
       <img src={logo} alt="Logo" />
       <h1>WOOL INFO HEAVEN</h1>
       <p>
-        <i>#CUL-T-TADE</i>
+        <i id="temp">#CUL-T-TADE</i>
       </p>
       {showLoading ? (
         <ReactLoadings type="bubbles" color="#FDB323" height={100} width={50} />
       ) : (
         <Link to="/login">
-        <img src={next} alt="Log"></img>
+        <img src={next} alt="Log" id="nex"></img>
         </Link>
       )}
     </div>
