@@ -4,6 +4,7 @@ import Signup from "./pages/signup";
 import Login from './pages/login';
 import "./App.css";
 import Dashboad from './pages/dashboard';
+import Home from './pages/Sidebar-pages/home';
 export default function App() {
   return (
     <div className="App">
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboad />} />
+        <Route path="/home" element={<Home />} />
         </Routes>
        </BrowserRouter>
     </div>
