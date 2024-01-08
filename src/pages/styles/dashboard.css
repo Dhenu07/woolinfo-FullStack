@@ -15,6 +15,7 @@
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     display: flex;
     flex-direction: column;
+    position: sticky;
     font-size: 15px;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
@@ -112,13 +113,12 @@
   }
   
 .app-content {
-    padding: 16px;
-    background-color: var(--app-bg);
+    padding:8px;
     height: 100%;
-    flex: 1;
-    max-height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    scroll-behavior: smooth;
   }
   span{
     font-size: 15px;
@@ -127,30 +127,3 @@
     background-color: #FFCD00;
     border-radius: 50%;
   }
-  /* .app-content-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 4px;
-  }
-  .app-content-headerText {
-    color: var(--app-content-main-color);
-    font-size: 24px;
-    line-height: 32px;
-    margin: 0;
-  }
-  .app-content-headerButton {
-    background-color: var(--action-color);
-    color: #fff;
-    font-size: 14px;
-    line-height: 24px;
-    border: none;
-    border-radius: 4px;
-    height: 32px;
-    padding: 0 16px;
-    transition: 0.2s;
-    cursor: pointer;
-  }
-  .app-content-headerButton:hover {
-    background-color: var(--action-color-hover);
-  } */
