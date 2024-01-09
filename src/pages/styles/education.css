@@ -1,3 +1,4 @@
+/* @import 'typeface-poppins'; */
 .header{
     display: flex;
     width:100%;
@@ -59,7 +60,81 @@
 }
 .para{
     display: flex;
+    flex-direction: column;
     height: 500%;
-    width: 45%;
-    background-color: black;
+    width: 55%;
+    font-size:17px;
+    line-height:25px;
+    text-indent: 5px;
+}
+.Mod svg{
+    padding-top: 10px;
+}
+.Mod h3{
+      padding-left: 7px;
+}
+.Mod{
+    display: flex;
+    padding-bottom: 7px;
+}
+.coursecards{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content; 
+    margin-right: 40px;
+
+}
+.innercard{
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    margin: 10px;
+    height: 25vh;
+    border-bottom:4px solid black;
+    border-left:2px solid black;
+    border-top:4px solid black;
+    padding: 7px;
+    border-radius: 24px 24px 24px 24px ;
+}
+
+.imgflex img{
+    height: 25vh;
+    width:30vb;
+    border-radius: 14px;
+}
+.imgflex{
+    display: flex;
+    width: 20%;
+    height: fit-content;
+}
+
+.innerconten{
+    display:flex;
+    height: 25vh;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 60%;
+    border-right: 2px solid black;
+}
+
+.innerconten1{
+    width:20%;
+    display: flex;
+    padding-top:4px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.start{
+    display: flex;
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    width: 50%;
+    border-radius:30px;
+    height: 20%;
+    color: white;
+    align-items: center;
+    justify-content: center;
+
 }

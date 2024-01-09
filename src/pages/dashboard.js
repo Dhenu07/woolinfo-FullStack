@@ -67,7 +67,6 @@ export default function Dashboad(){
           </button>
         </div>
       </div>
-
       <div className="app-content">
         {activeItem === "1" && <Home />}
         {activeItem === "2" && <Shop />}
