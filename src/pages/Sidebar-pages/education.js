@@ -15,7 +15,8 @@
         setActiveItem(id);
         };
         return(
-            <><div className="header">
+            <><div className="education">
+            <div className="header">
                 <img src={indus} alt="industry" />
             </div>
             <div className="introhead">
@@ -164,6 +165,7 @@
                             <h4>1 Hour 30 Minutes</h4><br/>
                             <div className="start"><h3>BEGIN</h3></div>
                             </div>   
+                         </div>
                          </div>
                          </div>
                 </>
