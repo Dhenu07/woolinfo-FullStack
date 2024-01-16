@@ -7,7 +7,6 @@ const NewsList=()=>{
     useEffect(()=>{
         const getArticles=async()=>{
             const response=await axios.get('https://newsapi.org/v2/everything?q=wool&apiKey=fd11a103ee194b3ba6bdb4c78e4cb34d');
-            console.log(response);
             setArticles(response.data.articles);
         }
         getArticles()

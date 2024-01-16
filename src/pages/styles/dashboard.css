@@ -5,9 +5,10 @@
     padding: 0;
     width: 100%;
     height: fit-content;
+    font-family: "Poppins", sans-serif;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
-.sidebar {
+.sidebar{
     max-width: 15%;
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     display: flex;
@@ -16,7 +17,6 @@
     font-weight: bold;
     height: 100%;
     position: fixed;
-    font-family: "Poppins", sans-serif;
     text-transform: uppercase;
     border-radius:0px 40px 0px 0px;
   }
@@ -109,11 +109,10 @@
     background-color: transparent;
     margin-left: auto;
   }
-  
-.app-content {
+ .app-content {
     scroll-behavior: smooth;
-    padding-left: 16%;
-  }
+    padding-left:16% ;
+    }
   span{
     font-size: 15px;
   }
