@@ -41,18 +41,12 @@ export default function ContactUs(){
           </div>
         </div>
         <div className="contact-form">
-          <form id="contact-form">
-            <div>
-              <input type="text" className="form-control" placeholder="First Name" />
-              <input type="text" className="form-control" placeholder="Last Name" />
-            </div>
-            <div>
-              <input type="email" className="form-control" placeholder="E-mail" />
-              <input type="text" className="form-control" placeholder="Phone" />
-            </div>
-            <textarea rows="5" placeholder="Message" className="form-control"></textarea>
-            <input type="submit" className="send-btn" value="Send Message" />
-          </form>
+        <form id ="contact-form">      
+  <input name="name" type="text" className="feedback-input" placeholder="Name" />   
+  <input name="email" type="text" className="feedback-input" placeholder="Email" />
+  <textarea name="text" className="feedback-input" placeholder="Comment"></textarea>
+  <input type="submit" value="SUBMIT"/>
+</form>
         </div>
       </div>
 
