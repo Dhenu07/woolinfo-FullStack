@@ -141,7 +141,7 @@
   border-color: #FFCD00;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .contact-bg .text {
     width: 70%;
     margin-left: auto;
@@ -152,7 +152,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-} */
+}
 
 #contact-form{
   background-color: transparent;
