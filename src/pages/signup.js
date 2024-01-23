@@ -26,18 +26,18 @@ function Signup() {
    setIsConfirmPasswordValid(value === password);
  };
 
- const handleSignup = () => {
-   if (name === '' || email === '' || password === '' || confirmPassword === '') {
-     setErrorMessage('Please fill in all required fields.');
-   } else if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-    alert(`Hi ${name} Signup successful!,Redirecting to dashboard...`);
-     setTimeout(() => {
-       navigate('/dashboard');
-     }, 1000);
-   } else {
-     setErrorMessage('Please check the fields for errors.');
-   }
- };
+  const handleSignup = () => {
+    if (name === '' || email === '' || password === '' || confirmPassword === '') {
+      setErrorMessage('Please fill in all required fields.');
+    } else if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
+      alert(`Hi ${name} Signup successful!,Redirecting to dashboard...`);
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
+    } else {
+      setErrorMessage('Please check the fields for errors.');
+    }
+  };
 
  return (
    <div className="body">
