@@ -1,0 +1,106 @@
+.woolform,.input1{
+  background-color: transparent !important;
+}
+.woolform{
+   display: flex;
+   width:100%;
+   background-color: transparent !important;
+}
+.imagebox{
+  display: flex;
+  flex-direction: row;
+  gap:7px;
+  align-items: center;
+}
+.image{
+  display: flex;
+  height: 15vh;
+  width: 15vb;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.woolist{
+  display: flex;
+  width: 100%;
+  padding:14px 0px 14px 0px;
+  gap: 20%;
+  border-radius: 8px;
+  align-items:center;
+  flex-flow:row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.woolform p {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #444;
+  display: flex;
+}
+
+.wlist,.input{
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #555;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.wlist:hover,.input:hover {
+  border-color:#FFCD00 ;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.wlist option{
+  font-size: 16px;
+  background-color: #fff;
+  color: #555;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.wlist option:hover {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.innerbox{
+  padding:14px 0px 14px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-flow:column;
+  flex-wrap: wrap;
+}
+.radiocontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.innerbox label {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.feedbackinput {
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #FFCD00;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+.submitform{
+  width: fit-content;
+}

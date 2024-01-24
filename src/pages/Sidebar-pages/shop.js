@@ -20,7 +20,8 @@ export default function Shop() {
      {activeItem === "1" && <div className="wool-list">
       <h1>Hey</h1>
       </div>}
-     {activeItem === "2" && <Woolform/>}
+      
+     {activeItem === "2" && <div className="wool-form"><Woolform/></div>}
      </div>
     </div>
   );

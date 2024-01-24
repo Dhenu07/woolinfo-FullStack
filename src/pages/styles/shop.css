@@ -18,3 +18,12 @@
     border-radius:4px ;
     font-weight: bold;
 }
+
+.shop-container{
+    display: inline;
+      width:100%;
+}
+.wool-form{
+    display: flex;
+    width: 100%; 
+  }

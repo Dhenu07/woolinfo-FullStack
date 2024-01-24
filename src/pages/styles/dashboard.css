@@ -5,7 +5,6 @@
     padding: 0;
     width: 100%;
     height: fit-content;
-    font-family: "Poppins", sans-serif;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 .sidebar{
@@ -105,7 +104,7 @@
   .account-info-more {
     color: black;
     padding: 0;
-    border: none;
+    border-color: #FFCD00 ;
     background-color: transparent;
     margin-left: auto;
   }
@@ -116,11 +115,10 @@
   span{
     font-size: 15px;
   }
-  #feather{
-    background-color: #FFCD00;
+  /* #feather{
     border-radius: 50%;
-  }
+    background-color: #FFCD00 !important;
+  } */
   .whole{
     display: flex;
-
   }
