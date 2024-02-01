@@ -11,7 +11,7 @@ export default function Login(){
         <div className="container" id="container">
 <div class="form-container sign-in-container">
 <form action="#">
-   <h1 className="h1">Sign In</h1>
+   <h1 className="h1">Login</h1>
    <div className="social-container">
    <a href="#" class="social"><i class="fa fa-facebook"></i></a>
    <a href="#" class="social"><i class="fa fa-google"></i></a>
@@ -30,8 +30,6 @@ export default function Login(){
    <div className="overlay-panel overlay-right">
        <h1 className="h1">Hello, Trader!</h1>
        <p className="p">Enter your details and start journey with us</p>
-       <Link to="/signup"><button>Sign Up</button></Link>
-
    </div>
    </div>
    </div>

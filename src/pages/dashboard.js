@@ -5,6 +5,7 @@ import News from './Sidebar-pages/news';
 import Education from './Sidebar-pages/education';
 import ContactUs from './Sidebar-pages/conus';
 import Shop from './Sidebar-pages/shop';
+import Profile from './Sidebar-pages/profile';
 import logo from '../images/logo.png';
 import pic from '../images/Dsd.JPG';
 import "./styles/dashboard.css";
@@ -28,7 +29,7 @@ export default function Dashboad(){
         <ul className="sidebar-list">
         <li className={`sidebar-list-item ${activeItem === "1" ? "active" : ""}`}>
             <a href="#" id="1" onClick={() => handleItemClick("1")}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
               <span>Home</span>
             </a>
           </li>
@@ -64,9 +65,10 @@ export default function Dashboad(){
           </li>
         </ul>
         <div className="account-info">
+        <a href="#" id="7" onClick={() => handleItemClick("7")}>
           <div className="account-info-picture">
             <img src={pic} alt="Account"/>
-          </div>
+          </div></a>
           <div className="account-info-name">Dhenu D S</div>
           <button className="account-info-more">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" color="#FFCD00"height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal" id="feather"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
@@ -80,6 +82,7 @@ export default function Dashboad(){
         {activeItem === "4" && <Education />}
         {activeItem === "5" && <Cart />}
         {activeItem === "6" && <ContactUs />}
+        {activeItem === "7" && <Profile />}
       </div>
         </div>
     );

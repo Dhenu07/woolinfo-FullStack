@@ -29,6 +29,7 @@ function Signup() {
   const handleSignup = () => {
     if (name === '' || email === '' || password === '' || confirmPassword === '') {
       setErrorMessage('Please fill in all required fields.');
+      return;
     } else if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
       alert(`Hi ${name} Signup successful!,Redirecting to dashboard...`);
       setTimeout(() => {
@@ -43,7 +44,7 @@ function Signup() {
    <div className="body">
      <div className="container" id="container">
        <div className="form-container sign-in-container">
-         <form>
+         <form action="get">
            <h1 className="h1">Sign Up</h1>
            {errorMessage && <span className="error-message">{errorMessage}</span>}
            <div className="social-container">
@@ -83,7 +84,6 @@ function Signup() {
              className={isConfirmPasswordValid ? '' : 'invalid'}
            />
            {!isConfirmPasswordValid && <span className="error-message">Passwords do not match.</span>}
-
            <button type="button" onClick={handleSignup}>Sign Up</button>
          </form>
        </div>
@@ -92,7 +92,6 @@ function Signup() {
             <div className="overlay-panel overlay-right">
               <h1 className="h1">Welcome Trader!</h1>
               <p className="p">To keep connected with us please login with your personal info</p>
-              <Link to="/login"><button>SIGN IN</button></Link>
             </div>
           </div>
         </div>

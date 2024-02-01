@@ -5,20 +5,33 @@ export default function Woolform() {
   const [location, setLocation] = useState(null);
   const [files, setFiles] = useState([]);
   const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+  });
 
-  function handleChange(e) {
-    const selectedFiles = e.target.files;
-    const allowedTypes = ['image/jpeg', 'image/jpg'];
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
 
-    const newFiles = Array.from(selectedFiles).filter(file => {
-      const fileName = file.name.toLowerCase();
-      const isAllowedType = allowedTypes.includes(file.type);
-      return isAllowedType && (fileName.endsWith('.jpeg') || fileName.endsWith('.jpg'));
-    });
+    if (type === 'file') {
+      const selectedFiles = e.target.files;
+      const allowedTypes = ['image/jpeg', 'image/jpg'];
 
-    setFiles(prevFiles => [...prevFiles, ...newFiles]);
+      const newFiles = Array.from(selectedFiles).filter(file => {
+        const fileName = file.name.toLowerCase();
+        const isAllowedType = allowedTypes.includes(file.type);
+        return isAllowedType && (fileName.endsWith('.jpeg') || fileName.endsWith('.jpg'));
+      });
+
+      setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    } else {
+      setFormData(prevData => ({
+        ...prevData,
+        [name]: value
+      }));
+    }
+
     setError('');
-  }
+  };
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
@@ -36,9 +49,37 @@ export default function Woolform() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validate fields before submitting
+    if (!validateFields()) {
+      setError('Please fill in all the required fields.');
+      return;
+    }
+    // Your form submission logic here
+    console.log('Form submitted successfully!');
+  };
+
+  const validateFields = () => {
+    // Validate email
+    const emailValue = formData.email.trim();
+    if (!emailValue || !isValidEmail(emailValue)) {
+      setError('Please enter a valid email address.');
+      return false;
+    }
+    // Add validation for other fields if needed
+    return true;
+  };
+
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+
 
   return (
-      <form action="#" className={compo.woolform}>
+    <form action="#" className={compo.woolform} onSubmit={handleSubmit}>
         <div className={compo.woolist}>
         <div className={compo.innerbox}>
         <p>Wool Type</p>
@@ -60,12 +101,12 @@ export default function Woolform() {
           <input type="number" id="length" name="length"min="0" max="1000" className={compo.input} placeholder="length in mm"/>
         </div>
         <div className={compo.innerbox}>
-          <p>Microns</p>
-          <input type="number" id="microns" name="microns"min="0" max="1000" step="0.05"className={compo.input} placeholder="microns"/>
-        </div>
-        <div className={compo.innerbox}>
           <p>VM</p>
           <input type="number" id="vm" name="vm" min="0" max="100" className={compo.input} placeholder="in %"/>
+        </div>
+        <div className={compo.innerbox}>
+          <p>Microns</p>
+          <input type="number" id="microns" name="microns"min="0" max="1000" step="0.05"className={compo.input} placeholder="microns"/>
         </div>
         <div className={compo.innerbox}>
         <p>Your Location</p>
@@ -82,7 +123,7 @@ export default function Woolform() {
         </div>
         <div className={compo.innerbox}>
         <p>Phone Number</p>
-        <input type="tel" id="phone" name="phone" className={compo.input} pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/>
+        <input type="tel" id="phone" name="phone" className={compo.input} pattern="[0-9]{10}"/>
         </div>
         <div className={compo.innerbox}>
           <p>Testing Certificate Available?</p>
@@ -99,7 +140,15 @@ export default function Woolform() {
         </div>
         <div className={compo.innerbox}>
           <p>Email</p>
-        <input name="email" type="email" className={compo.input} placeholder="Email" />   
+          <input
+          name="email"
+          type="email"
+          className={compo.input}
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
           </div>
         <div className={compo.innerbox}>  
         <p>Title</p>
@@ -115,7 +164,6 @@ export default function Woolform() {
           </div>
           <div className={compo.innerbox}>
           <p>Wool Images</p>
-          <div className={compo.upload}>
             <input
               className={compo.input1}
               type="file"
@@ -123,7 +171,6 @@ export default function Woolform() {
               onChange={handleChange}
               multiple 
             />
-          </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <div className={compo.imagebox}>
             {files.map((file, index) => (
@@ -132,8 +179,8 @@ export default function Woolform() {
           </div>
         </div>
         <div className={compo.submitform}>
-          <input type="submit" value="Upload"/>
-        </div>
+        <input type="submit" value="Upload" />
+      </div>
         </div>
       </form>
   );

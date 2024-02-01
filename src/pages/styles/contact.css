@@ -59,6 +59,7 @@
 .text {
   font-weight: 300;
   opacity: 0.9;
+  color:white;
 }
 
 .contact-bg .text {
@@ -75,6 +76,7 @@
   margin: 2rem 0;
   text-align: center;
   padding: 2rem 0;
+  color: white;
 }
 
 .contact-info span {
@@ -185,23 +187,24 @@ textarea {
 
 [type="submit"] {
   width: 160px;
-  height: 60px;
-  background-image:linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
-  border-radius:40%;
+  height: 50px; 
+  background-color: white;
+  border-radius:10%;
   border:0;
   cursor:pointer;
-  color:white;
+  color:black;
   font-size:20px;
-  padding-top:10px;
-  padding-bottom:10px;
   transition: all 0.3s;
   margin-top:-4px;
   font-weight:700;
 }
-[type="submit"]:hover { background: linear-gradient(112.1deg, rgb(63, 76, 119) 70.2%,rgb(32, 38, 57) 11.4%); }
+[type="submit"]:hover { background: black;color: white; }
 
 .contact-form{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.feedback-input::placeholder{
+  color: white;
 }

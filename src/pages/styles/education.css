@@ -56,7 +56,7 @@
      font-size: 20px;
 }
 .list-it.active a{
-    border-bottom:2px solid black;
+    border-bottom:2px solid white !important; 
     border-radius:4px ;
 }
 .para{
@@ -130,11 +130,11 @@
 
 .start{
     display: flex;
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    background:white;
     width: 50%;
     border-radius:30px;
     height: 20%;
-    color: white;
+    color: black;
     align-items: center;
     justify-content: center;
 }
@@ -143,5 +143,21 @@
     width: fit-content;
     display: flex;
     flex-direction: column;
-    font-family: "Poppins", sans-serif;
+    padding-left: 2%;
+    scroll-behavior: smooth;
+    color: white !important;
+}
+.paravid{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+.innervid{
+    display: flex;
+    background-color:aqua ;
+}
+.player1{
+    display: flex;
+    width: 20%;
+    height: 30vh;
 }

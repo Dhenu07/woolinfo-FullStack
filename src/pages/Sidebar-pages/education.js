@@ -1,4 +1,4 @@
-    import React from "react";
+    import React ,{ useRef }from "react";
     import '../styles/education.css';
     import indus from '../../images/industry.jpg';
     import { useState } from "react";
@@ -14,6 +14,13 @@
         const handleItemClick = (id) => {
         setActiveItem(id);
         };
+        const handleVideoEnd = () => {
+            if (videoRef.current) {
+              videoRef.current.currentTime = 0;
+            }
+          };
+        
+          const videoRef = useRef(null);
         return(
             <><div className="education">
             <div className="header">
@@ -47,6 +54,7 @@
                     <div className={`list-it ${activeItem === "2" ? "active" : ""}`}><a href="#" id="2" onClick={() => handleItemClick("2")}><p>Outcome</p></a></div>
                     <div className={`list-it ${activeItem === "3" ? "active" : ""}`}><a href="#" id="3" onClick={() => handleItemClick("3")}><p>Structure</p></a></div>
                 </div>
+                <div className="paravid">
                 {activeItem === "1" && (
                 <div className="para">
                     <p>This course is designed to introduce you to wool, wool processing and to wool products.It provides an introductory overview to the journey of wool from farm to fashion.</p>
@@ -77,6 +85,19 @@
                         <li>Innovations in wool products</li>
                     </ol>
                 </div>)}
+                <div className="innerVid">
+                <div className="player1">
+        <video
+          ref={videoRef}
+          src={process.env.PUBLIC_URL + '/Videos/Wool Intro.mp4'}
+          controls={false}
+          autoPlay={true}
+          loop={true}
+          onEnded={handleVideoEnd}
+        />
+      </div>
+                </div>
+                </div>
                 <div className="Mod">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                 <h3><b>MODULES : 6</b></h3>

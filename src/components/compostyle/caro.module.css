@@ -1,0 +1,7 @@
+.elements .ele{
+    display: flex;
+    height: 50vh;
+    width: 100%;
+    color: rgb(255, 249, 249);
+    transition: transform 0.5s ease;
+  }
