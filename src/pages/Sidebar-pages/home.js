@@ -62,30 +62,37 @@ const Home = () => {
         <div className="image-container">
             <div className="image-wrapper1">
                 <img src={img11}/>
+                <div class="buy-button">Buy Now</div>
                 <p className="description">Vardhaman<br/>26 Products</p>
             </div>
             <div className="image-wrapper1">
                 <img src={img12}/>
+                <div class="buy-button">Buy Now</div>
                 <p className="description">Oswal<br/>14 Products</p>
             </div>
             <div className="image-wrapper1">
                 <img src={img13}/>
+                <div class="buy-button">Buy Now</div>
                 <p className="description1">Raw Wool<br/>10 Products</p>
             </div>
             <div className="image-wrapper1">
             <img src={img17}/>
+            <div class="buy-button">Buy Now</div>
                 <p className="description">Abc Wools<br/>7 Products</p>
             </div>
             <div className="image-wrapper1">
             <img src={img14}/>
+            <div class="buy-button">Buy Now</div>
                 <p className="description">Macrame<br/>10 Products</p>
             </div>
             <div className="image-wrapper1">
             <img src={img15}/>
+            <div class="buy-button">Buy Now</div>
                 <p className="description">Accessories<br/>39 Products</p>
             </div>
             <div className="image-wrapper1">
             <img src={img16}/>
+            <div class="buy-button">Buy Now</div>
                 <p className="description">Taj<br/>5 Products</p>
             </div>
         </div>

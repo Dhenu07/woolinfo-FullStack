@@ -136,10 +136,10 @@
 }
 
 .popular .image-wrapper1 {
-    margin: 0 10px;
-    overflow: hidden; 
+  position: relative; /* Ensure proper positioning for the absolute element */
+  margin: 0 10px;
+  overflow: hidden;
 }
-
 .popular .image-wrapper1 img {
     display: flex;
     width: 250px; 
@@ -149,12 +149,34 @@
     margin-bottom: 20px;
 }
 
-.popular .image-wrapper1:hover img {
-    transform: scale(1.1);
-    border-radius: 15px 15px 15px 15px;
-    cursor: pointer; 
+.popular .image-wrapper1 .buy-button {
+  position: absolute;
+  top: 50%; /* Adjust as needed */
+  left: 50%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  background-color: #FFCD00;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
-
+.popular .image-wrapper1:hover .buy-button {
+  opacity: 1;
+}
+.popular .image-wrapper1 img {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  border-radius: 15px 15px 15px 15px;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+.popular .image-wrapper1:hover img {
+  transform: scale(1.1);
+  border-radius: 15px 15px 15px 15px;
+  cursor: pointer;
+}
 .description {
     font-size: 16px;
     margin-top: 5px;

@@ -1,0 +1,138 @@
+.login-box {
+  width: 80%;
+  padding: 40px;
+  background-image:radial-gradient(590px at 8.2% 23.8%, rgb(37, 46, 60) 167%, rgb(187, 187, 187) 0%);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex-basis: calc(50% - 5px);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 5px; 
+}
+
+label{
+  margin-right: 10px;
+  min-width: 100px;
+  display: inline-block;
+  padding-left: 40px;
+}
+
+.form-control {
+  width: calc(100% - 110px);
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: transparent;
+ padding-left: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control::-ms-expand {
+  display: none;
+}
+
+.form-control::after {
+  content: '\25BC';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.form-control option {
+  background-color:black;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.form-control:hover {
+  border-color: #FFCD00;
+  cursor: pointer;
+}
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: calc(100% - 110px);
+  margin-top: 10px;
+}
+
+.file-input-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 400px;
+}
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.file-input-text {
+  display: inline-block;
+  padding: 10px;
+  background-color: #243b55;
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  
+
+}
+.wrapper{
+position: relative;
+width: 100%;
+height: 100%;
+margin-top: 20px;
+}
+
+
+.success{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #fff;
+border-radius: 50%;
+z-index: 1;
+opacity: 0;
+visibility: hidden;
+transition: all .35s;
+}
+.image-previ {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.image-previ img {
+  display: flex;
+  width:200px;
+  height: 150px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}

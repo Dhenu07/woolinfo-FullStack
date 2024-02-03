@@ -41,7 +41,6 @@
   .sidebar-list {
     list-style-type: none;
     padding: 0;
-    
   }
   .sidebar-list-item {
     position: relative;
@@ -118,10 +117,6 @@
   span{
     font-size: 15px;
   }
-  /* #feather{
-    border-radius: 50%;
-    background-color: #FFCD00 !important;
-  } */
   .whole{
     display: flex;
   }

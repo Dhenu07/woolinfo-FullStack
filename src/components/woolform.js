@@ -1,187 +1,172 @@
 import React, { useState } from 'react';
-import compo from './compostyle/woolform.module.css';
+import './compostyle/woolform.css';
 
 export default function Woolform() {
-  const [location, setLocation] = useState(null);
-  const [files, setFiles] = useState([]);
-  const [error, setError] = useState('');
-  const [formData, setFormData] = useState({
-    email: '',
-  });
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [validationErrors, setValidationErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value, type } = e.target;
+  const handleImageChange = (e) => {
+    const files = e.target.files;
+    const uniqueFiles = [];
+    const errors = {};
 
-    if (type === 'file') {
-      const selectedFiles = e.target.files;
-      const allowedTypes = ['image/jpeg', 'image/jpg'];
-
-      const newFiles = Array.from(selectedFiles).filter(file => {
-        const fileName = file.name.toLowerCase();
-        const isAllowedType = allowedTypes.includes(file.type);
-        return isAllowedType && (fileName.endsWith('.jpeg') || fileName.endsWith('.jpg'));
-      });
-
-      setFiles(prevFiles => [...prevFiles, ...newFiles]);
-    } else {
-      setFormData(prevData => ({
-        ...prevData,
-        [name]: value
-      }));
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
+        if (!selectedImages.some(img => img.name === file.name)) {
+          uniqueFiles.push(file);
+        } else {
+          errors['image'] = 'Duplicate images are not allowed.';
+        }
+      } else {
+        errors['image'] = 'Only JPEG or JPG image formats are allowed.';
+      }
     }
 
-    setError('');
+    setSelectedImages([...selectedImages, ...uniqueFiles]);
+    setValidationErrors(errors);
   };
 
-  const handleGetLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setLocation({ latitude, longitude });
-        },
-        (error) => {
-          setError(`Error getting location: ${error.message}`);
-        }
-      );
-    } else {
-      setError('Geolocation is not supported by this browser.');
+  const validateForm = () => {
+    const errors = {};
+
+    // Validate required fields
+    const requiredFields = ['cost', 'length', 'Vm', 'Microns', 'Country', 'Address', 'Postalcode', 'Email', 'Ph', 'farm', 'des'];
+    requiredFields.forEach(field => {
+      const value = document.getElementById(field).value.trim();
+      if (!value) {
+        errors[field] = 'This field is required.';
+      }
+    });
+
+    // Validate phone number
+    const phoneRegex = /^[0-9]{10}$/;
+    const phoneValue = document.getElementById('Ph').value.trim();
+    if (!phoneRegex.test(phoneValue)) {
+      errors['Ph'] = 'Invalid phone number. It should be 10 digits.';
     }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailValue = document.getElementById('Email').value.trim();
+    if (!emailRegex.test(emailValue)) {
+      errors['Email'] = 'Invalid email address.';
+    }
+
+    setValidationErrors(errors);
+
+    // Return true if no validation errors, false otherwise
+    return Object.keys(errors).length === 0;
+  };
+
+  const getErrorForField = (field) => {
+    return validationErrors[field] || '';
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validate fields before submitting
-    if (!validateFields()) {
-      setError('Please fill in all the required fields.');
-      return;
+
+    const isValid = validateForm();
+
+    if (isValid) {
+      // Handle form submission logic here
+      // ...
     }
-    // Your form submission logic here
-    console.log('Form submitted successfully!');
   };
 
-  const validateFields = () => {
-    // Validate email
-    const emailValue = formData.email.trim();
-    if (!emailValue || !isValidEmail(emailValue)) {
-      setError('Please enter a valid email address.');
-      return false;
-    }
-    // Add validation for other fields if needed
-    return true;
+  const handleClear = () => {
+    // Clear all input values
+    const inputFields = document.querySelectorAll('.form-control');
+    inputFields.forEach((field) => {
+      field.value = '';
+    });
+
+    // Clear selected images and validation errors
+    setSelectedImages([]);
+    setValidationErrors({});
   };
 
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-
+  const formFields = [
+    { id: 'wools', label: 'Wool Type:', type: 'select', options: ['Merino', 'Lambswool', 'Cashmere', 'Alpaca', 'Bluefaced', 'Shetland', 'Mohair', 'Romney'] },
+    { id: 'cost', label: 'Cost per Ton:', type: 'text' },
+    { id: 'length', label: 'Length:', type: 'text' },
+    { id: 'Vm', label: 'VM:', type: 'text' },
+    { id: 'Microns', label: 'Microns:', type: 'text' },
+    { id: 'Country', label: 'Country:', type: 'text' },
+    { id: 'Address', label: 'Address:', type: 'text' },
+    { id: 'Postalcode', label: 'PostalCode:', type: 'text' },
+    { id: 'Email', label: 'Email:', type: 'email' },
+    { id: 'Ph', label: 'Phone:', type: 'Phone' },
+    { id: 'farm', label: 'Farm Name:', type: 'text' },
+    { id: 'des', label: 'Description:', type: 'text' },
+  ];
 
   return (
-    <form action="#" className={compo.woolform} onSubmit={handleSubmit}>
-        <div className={compo.woolist}>
-        <div className={compo.innerbox}>
-        <p>Wool Type</p>
-        <select name="wools" id="wool" className={compo.wlist}>
-            <option value="wool1">Greasy Wool</option>
-            <option value="wool2">Scoured Wool</option>
-            <option value="wool3">Carbonised Wool</option>
-            <option value="wool4">Noils & Wastes</option>
-            <option value="wool5">Tops & Open Tops</option>
-            <option value="wool6">Yarn</option>
-        </select>
+    <div className="login-box">
+      {formFields.map((field, index) => (
+        <div key={index} className="form-group">
+          {field.type === 'select' ? (
+            <>
+              <label htmlFor={field.id}>{field.label}</label>
+              <select name={field.id} className="form-control">
+                {field.options.map((option, optionIndex) => (
+                  <option key={optionIndex} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </>
+          ) : (
+            <>
+              <label htmlFor={field.id}>{field.label}</label>
+              <input
+                type={field.type}
+                id={field.id}
+                name={field.id}
+                className="form-control"
+              />
+            </>
+          )}
+          <label className="error-message">{getErrorForField(field.id)}</label>
         </div>
-        <div className={compo.innerbox}>
-          <p>Cost Per Kilo</p>
-          <input type="number" id="cost" name="cost" min="0" max="1000"className={compo.input} placeholder="Cost"/>
-        </div>
-        <div className={compo.innerbox}>
-          <p>Length</p>
-          <input type="number" id="length" name="length"min="0" max="1000" className={compo.input} placeholder="length in mm"/>
-        </div>
-        <div className={compo.innerbox}>
-          <p>VM</p>
-          <input type="number" id="vm" name="vm" min="0" max="100" className={compo.input} placeholder="in %"/>
-        </div>
-        <div className={compo.innerbox}>
-          <p>Microns</p>
-          <input type="number" id="microns" name="microns"min="0" max="1000" step="0.05"className={compo.input} placeholder="microns"/>
-        </div>
-        <div className={compo.innerbox}>
-        <p>Your Location</p>
-        <button type="button" onClick={handleGetLocation}>
-          Get Location
-        </button>
-        {location && (
-          <div>
-            <p>Latitude: {location.latitude}</p>
-            <p>Longitude: {location.longitude}</p>
-          </div>
-        )}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>
-        <div className={compo.innerbox}>
-        <p>Phone Number</p>
-        <input type="tel" id="phone" name="phone" className={compo.input} pattern="[0-9]{10}"/>
-        </div>
-        <div className={compo.innerbox}>
-          <p>Testing Certificate Available?</p>
-          <div className={compo.radiocontainer}>
-        <label>
-            <input type="radio" name="choice" value="yes"/>
-            Yes
-        </label>
-        <label>
-            <input type="radio" name="choice" value="no"/>
-            No
-        </label>
-    </div>
-        </div>
-        <div className={compo.innerbox}>
-          <p>Email</p>
+      ))}
+
+      <div className="form-group">
+        <label htmlFor="woolimg">Wool images:</label>
+        <div className="file-input-wrapper">
           <input
-          name="email"
-          type="email"
-          className={compo.input}
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-          </div>
-        <div className={compo.innerbox}>  
-        <p>Title</p>
-        <input name="title" type="text" className={compo.input} placeholder="Title" />
-          </div>
-        <div className={compo.innerbox}>  
-        <p>Sub-Title</p>
-        <input name="sub-title" type="text" className={compo.input} placeholder="Sub-Title" />
-          </div>
-        <div className={compo.innerbox}>
-          <p>Description</p>
-       <textarea name="text" className={compo.input} placeholder="Description above 1000 words" rows="100" cols="50"></textarea>
-          </div>
-          <div className={compo.innerbox}>
-          <p>Wool Images</p>
-            <input
-              className={compo.input1}
-              type="file"
-              name="name"
-              onChange={handleChange}
-              multiple 
-            />
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <div className={compo.imagebox}>
-            {files.map((file, index) => (
-              <img key={index} src={URL.createObjectURL(file)} className={compo.image} alt={`Image ${index + 1}`} />
+            type="file"
+            id="woolimg"
+            name="woolimage"
+            className="form-control"
+            accept="image/jpeg, image/jpg"
+            multiple
+            onChange={handleImageChange}
+          />
+          <div className="file-input-text">Browse</div>
+        </div>
+        <label className="error-message">{getErrorForField('image')}</label>
+      </div>
+
+      {selectedImages.length > 0 && (
+        <div>
+          <p>Selected Images:</p>
+          <div className="image-previ">
+            {selectedImages.map((image, index) => (
+              <img key={index} src={URL.createObjectURL(image)} alt={`Image ${index}`} />
             ))}
           </div>
         </div>
-        <div className={compo.submitform}>
-        <input type="submit" value="Upload" />
+      )}
+
+      <div className="button-group">
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
+        <button type="button" onClick={handleClear}>
+          Clear
+        </button>
       </div>
-        </div>
-      </form>
+    </div>
   );
 }
