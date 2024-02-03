@@ -1,0 +1,36 @@
+.list{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-left: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.list-it{
+    display: flex;
+    padding:6px;
+}
+.list p{
+     font-size: 20px;
+}
+.list-it.active a{
+    border-bottom:2px solid black;
+    border-radius:4px ;
+    font-weight: bold;
+}
+
+.shop-container{
+    display: inline;
+    width:100%;
+    margin-left: 15%;
+}
+.wool-form{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    overflow-x: hidden;
+    color: #fff;
+  }

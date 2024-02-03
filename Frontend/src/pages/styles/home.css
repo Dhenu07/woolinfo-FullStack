@@ -1,0 +1,201 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-left: 15%;
+  }
+  .dow{
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .qu{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding: 10%;
+    color: white;
+  }
+  .player {
+    display: flex;
+    height: 40vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .player video {
+    display: flex;
+    width: fit-content;
+    height: 40vh;
+    padding-right: 10%;
+  }
+  
+  .Caro {
+    position: relative;
+    display: flex;
+    height: 50vh;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .Caro img{
+    display: flex;
+    width: 100%;
+    height: 60vh;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .quote-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-quote {
+    color:whitesmoke;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding-top: 140px;
+    max-width: 80%;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .count{
+    margin-top: 40px;
+    display: flex;
+    height: 20vh;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .score{
+    display: flex;
+    color: white;
+    height:100%;
+    width: 25vb;
+    align-items: center;
+    justify-content: center;
+  }
+  .score p{
+    font-weight: bold;
+    font-size: 25px;
+    color: #FFCD00; 
+  }
+  .score h1{
+    letter-spacing: 2px;
+    line-height: 35px;
+    margin-left: 10px;
+  }
+  @property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+  .span {
+    animation: counter 5s  forwards alternate ease-in-out;
+    counter-reset: num var(--num);
+    font: 800 40px system-ui;
+    color: #FFCD00; 
+    font-size:50px;
+  }
+  .span::after {
+    content: counter(num);
+  }
+  @keyframes counter {
+    from {
+      --num: 0;
+    }
+    to {
+      --num: 100;
+    }
+  }
+  .popular {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap; 
+    margin-top: 6%; 
+}
+
+.popular .image-wrapper1 {
+  position: relative; /* Ensure proper positioning for the absolute element */
+  margin: 0 10px;
+  overflow: hidden;
+}
+.popular .image-wrapper1 img {
+    display: flex;
+    width: 250px; 
+    height: 250px;
+    border-radius: 15px 15px 15px 15px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.popular .image-wrapper1 .buy-button {
+  position: absolute;
+  top: 50%; /* Adjust as needed */
+  left: 50%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  background-color: #FFCD00;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.popular .image-wrapper1:hover .buy-button {
+  opacity: 1;
+}
+.popular .image-wrapper1 img {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  border-radius: 15px 15px 15px 15px;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+.popular .image-wrapper1:hover img {
+  transform: scale(1.1);
+  border-radius: 15px 15px 15px 15px;
+  cursor: pointer;
+}
+.description {
+    font-size: 16px;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+.popular h1{
+  color: #FFCD00;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+.popular p{
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+}
+.Caroimage{
+  display: flex;
+  width:100%;
+  height: fit-content;
+}

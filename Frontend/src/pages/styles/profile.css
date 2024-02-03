@@ -1,0 +1,74 @@
+.Profile{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    margin-left: 15%;
+}
+.containerpro {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+    margin-top: 80px;
+}
+.containerpro h3 {
+    text-align: center;
+    font-size: 30px;
+}
+p.php {
+    text-align: center;
+    font-size: 26px;
+}
+.containerpro .c1 {
+    padding-left: 20px;
+}
+.containerpro .c1 p {
+    line-height: 1.5;
+    max-width: 400px;
+}
+.containerpro .c3 {
+    margin-right: 190px;
+    padding-left: 30px;
+}
+.containerpro .c2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 100px;
+}
+.containerpro .c2 img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 40px;
+}
+.contact-foo{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    height:fit-content;
+}
+.social-li{
+    display: flex;
+    height: fit-content;
+    justify-content: space-evenly;
+}
+.social-li a {
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.4rem;
+    transition: all 0.4s ease;
+  }
+  .social-li a:hover {
+    color: #FFCD00;
+    border-color: #FFCD00;
+  }
