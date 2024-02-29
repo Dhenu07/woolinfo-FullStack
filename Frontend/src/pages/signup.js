@@ -3,7 +3,7 @@ import { Link ,useNavigate} from 'react-router-dom';
 import "./styles/login.css";
 import 'font-awesome/css/font-awesome.min.css';
 import Vide from "../components/videoback";
-
+import axios from 'axios';
 function Signup() {
  const [name, setName] = useState('');
  const [email, setEmail] = useState('');
@@ -13,6 +13,7 @@ function Signup() {
  const [isPasswordValid, setIsPasswordValid] = useState(true);
  const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(true);
  const [errorMessage, setErrorMessage] = useState('');
+ const handleSubmit=useState();
  const navigate = useNavigate();
  const validateEmail = (value) => {
    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,10 +33,15 @@ function Signup() {
       setErrorMessage('Please fill in all required fields.');
       return;
     } else if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-      alert(`Hi ${name} Signup successful!,Redirecting to dashboard...`);
-      setTimeout(() => {
-        navigate('/home');
-      }, 1000);
+        console.log("hello");
+        axios.post('http://localhost:5000/signup',{name,email,password})
+        .then((res)=>{
+          console.log(res.data);
+          setTimeout(() => {
+            navigate('/login');
+          }, 1000);
+        })
+        .catch(err=>console.log(err))
     } else {
       setErrorMessage('Please check the fields for errors.');
     }
@@ -46,7 +52,7 @@ function Signup() {
     <Vide/>
      <div className="container" id="container">
        <div className="form-container sign-in-container">
-         <form action="get">
+         <form >
            <h1 className="h1">Sign Up</h1>
            {errorMessage && <span className="error-message">{errorMessage}</span>}
            <div className="social-container">
@@ -94,7 +100,7 @@ function Signup() {
             <div className="overlay-panel overlay-right">
               <h1 className="h1">Welcome Trader!</h1>
               <p className="p">To keep connected with us please login with your personal info</p>
-              <Link to='/login'><button>Sign in</button></Link>
+              <Link to='/login'><button type='button'>Sign in</button></Link>
             </div>
           </div>
         </div>

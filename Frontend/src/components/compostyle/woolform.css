@@ -1,7 +1,7 @@
 .login-box {
   width: 80%;
   padding: 40px;
-  background-image:radial-gradient(590px at 8.2% 23.8%, rgb(37, 46, 60) 167%, rgb(187, 187, 187) 0%);
+  background-image:radial-gradient(590px at 8.2% 23.8%, rgb(37, 46, 60) 195%, rgb(187, 187, 187) 0%);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   border-radius: 10px;
@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   margin-top: 40px;
   margin-bottom: 20px;
+  margin-left: 16%;
 }
 
 .form-group {
@@ -135,4 +136,8 @@ transition: all .35s;
   border: 1px solid #ddd;
   margin-bottom: 10px;
   border-radius: 10px;
+}
+
+input::placeholder{
+  color: rgb(255, 255, 255);
 }

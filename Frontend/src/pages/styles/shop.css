@@ -24,13 +24,3 @@
     width:100%;
     margin-left: 15%;
 }
-.wool-form{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    overflow-x: hidden;
-    color: #fff;
-  }

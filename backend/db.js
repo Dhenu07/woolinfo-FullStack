@@ -1,25 +1,21 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://DhenuDs:DhenuDurai@cluster0.zaupcst.mongodb.net/?retryWrites=true&w=majority";
+// db.js
+const mongoose = require('mongoose');
+const uri = "mongodb+srv://DhenuDs:DhenuDurai@cluster0.zaupcst.mongodb.net/Woolinfoheaven?retryWrites=true&w=majority";
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
- 
-async function run() {
+async function connectDB() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
+    await mongoose.connect(uri, clientOptions);
+    await mongoose.connection.db.admin().command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error.message);
+    process.exit(1);
   }
 }
-run().catch(console.dir);
+
+async function disconnectDB() {
+  await mongoose.disconnect();
+}
+
+module.exports = { connectDB, disconnectDB };

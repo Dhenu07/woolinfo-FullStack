@@ -1,61 +1,93 @@
 import React, { useState } from 'react';
 import './compostyle/woolform.css';
-
+import axios from 'axios';
 export default function Woolform() {
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [formData, setFormData] = useState({
+    wools: '',
+    cost: '',
+    length: '',
+    Vm: '',
+    Microns: '',
+    Country: '',
+    Address: '',
+    Postalcode: '',
+    Email: '',
+    Ph: '',
+    farm: '',
+    des: '',
+  });
+  
+  const [image, setImage] = useState(null); 
+  const [imageName, setImageName] = useState(''); // State to store the image name
   const [validationErrors, setValidationErrors] = useState({});
 
   const handleImageChange = (e) => {
-    const files = e.target.files;
-    const uniqueFiles = [];
-    const errors = {};
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    const file = e.target.files[0]; 
+    if (file) {
       if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
-        if (!selectedImages.some(img => img.name === file.name)) {
-          uniqueFiles.push(file);
-        } else {
-          errors['image'] = 'Duplicate images are not allowed.';
-        }
+        setImage(file); // Set the selected image
+        setImageName(file.name); // Store the image name
       } else {
-        errors['image'] = 'Only JPEG or JPG image formats are allowed.';
+        setValidationErrors({
+          image: 'Only JPEG or JPG image formats are allowed.',
+        });
       }
     }
+  };
 
-    setSelectedImages([...selectedImages, ...uniqueFiles]);
-    setValidationErrors(errors);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const validateForm = () => {
     const errors = {};
-
-    // Validate required fields
-    const requiredFields = ['cost', 'length', 'Vm', 'Microns', 'Country', 'Address', 'Postalcode', 'Email', 'Ph', 'farm', 'des'];
+    const requiredFields = ['wools', 'cost', 'length', 'Vm', 'Microns', 'Country', 'Address', 'Postalcode', 'Email', 'Ph', 'farm', 'des'];
     requiredFields.forEach(field => {
-      const value = document.getElementById(field).value.trim();
+      const value = formData[field].trim();
       if (!value) {
         errors[field] = 'This field is required.';
       }
     });
 
-    // Validate phone number
     const phoneRegex = /^[0-9]{10}$/;
-    const phoneValue = document.getElementById('Ph').value.trim();
+    const phoneValue = formData['Ph'].trim();
     if (!phoneRegex.test(phoneValue)) {
       errors['Ph'] = 'Invalid phone number. It should be 10 digits.';
     }
 
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const emailValue = document.getElementById('Email').value.trim();
+    const emailValue = formData['Email'].trim();
     if (!emailRegex.test(emailValue)) {
       errors['Email'] = 'Invalid email address.';
     }
 
-    setValidationErrors(errors);
+    if (isNaN(formData['cost']) || formData['cost'] <= 0) {
+      errors['cost'] = 'Cost must be a positive number.';
+    }
 
-    // Return true if no validation errors, false otherwise
+    if (isNaN(formData['length']) || formData['length'] <= 0) {
+      errors['length'] = 'Length must be a positive number.';
+    }
+
+    if (isNaN(formData['Vm']) || formData['Vm'] < 0 || formData['Vm'] > 100) {
+      errors['Vm'] = 'VM must be a number between 0 and 100.';
+    }
+
+    if (isNaN(formData['Microns']) || formData['Microns'] <= 0) {
+      errors['Microns'] = 'Microns must be a positive number.';
+    }
+
+    const postalCodeRegex = /^[0-9]{6}$/;
+    const postalCodeValue = formData['Postalcode'].trim();
+    if (!postalCodeRegex.test(postalCodeValue)) {
+      errors['Postalcode'] = 'Postal code must be a 6-digit number.';
+    }
+
+    setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
@@ -63,42 +95,69 @@ export default function Woolform() {
     return validationErrors[field] || '';
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const isValid = validateForm();
-
+  
     if (isValid) {
-      // Handle form submission logic here
-      // ...
+      const fm=new FormData();
+      fm.append("wools", formData.wools);
+      fm.append("cost",formData.cost);
+      fm.append("length",formData.length);
+      fm.append("Vm",formData.Vm);
+      fm.append("Microns",formData.Microns);
+      fm.append("Country",formData.Country);
+      fm.append("Address",formData.Address);
+      fm.append("Postalcode",formData.Postalcode);
+      fm.append("Email",formData.Email);
+      fm.append("Ph",formData.Ph);
+      fm.append("farm",formData.farm);
+      fm.append("image",image);
+      fm.append("userId",localStorage.getItem('userId'))
+      console.log(fm);
+      console.log(image);
+      console.log(imageName);
+      axios.post('http://localhost:5000/formupload',fm)
+      .then(res=>{console.log(res)})
+      .catch(err => {console.log(err)})
+      handleClear();
     }
   };
 
   const handleClear = () => {
-    // Clear all input values
-    const inputFields = document.querySelectorAll('.form-control');
-    inputFields.forEach((field) => {
-      field.value = '';
+    setFormData({
+      wools: '',
+      cost: '',
+      length: '',
+      Vm: '',
+      Microns: '',
+      Country: '',
+      Address: '',
+      Postalcode: '',
+      Email: '',
+      Ph: '',
+      farm: '',
+      des: ''
     });
-
-    // Clear selected images and validation errors
-    setSelectedImages([]);
     setValidationErrors({});
+    setImage(null); 
+    setImageName(''); 
   };
 
   const formFields = [
     { id: 'wools', label: 'Wool Type:', type: 'select', options: ['Merino', 'Lambswool', 'Cashmere', 'Alpaca', 'Bluefaced', 'Shetland', 'Mohair', 'Romney'] },
-    { id: 'cost', label: 'Cost per Ton:', type: 'text' },
-    { id: 'length', label: 'Length:', type: 'text' },
-    { id: 'Vm', label: 'VM:', type: 'text' },
-    { id: 'Microns', label: 'Microns:', type: 'text' },
+    { id: 'cost', label: 'Cost per Ton:', type: 'text', placeholder: 'in Rs' },
+    { id: 'length', label: 'Length:', type: 'text', placeholder: 'in mm' },
+    { id: 'Vm', label: 'VM:', type: 'text', placeholder: 'in %' },
+    { id: 'Microns', label: 'Microns:', type: 'text', placeholder: 'microns' },
     { id: 'Country', label: 'Country:', type: 'text' },
     { id: 'Address', label: 'Address:', type: 'text' },
-    { id: 'Postalcode', label: 'PostalCode:', type: 'text' },
+    { id: 'Postalcode', label: 'PostalCode:', type: 'text', placeholder: '641 606' },
     { id: 'Email', label: 'Email:', type: 'email' },
     { id: 'Ph', label: 'Phone:', type: 'Phone' },
     { id: 'farm', label: 'Farm Name:', type: 'text' },
-    { id: 'des', label: 'Description:', type: 'text' },
+    { id: 'des', label: 'Description:', type: 'text', placeholder: 'in 100words' },
   ];
 
   return (
@@ -108,7 +167,7 @@ export default function Woolform() {
           {field.type === 'select' ? (
             <>
               <label htmlFor={field.id}>{field.label}</label>
-              <select name={field.id} className="form-control">
+              <select name={field.id} className="form-control" onChange={handleInputChange} value={formData[field.id]}>
                 {field.options.map((option, optionIndex) => (
                   <option key={optionIndex} value={option}>
                     {option}
@@ -124,6 +183,9 @@ export default function Woolform() {
                 id={field.id}
                 name={field.id}
                 className="form-control"
+                placeholder={field.placeholder}
+                onChange={handleInputChange}
+                value={formData[field.id]}
               />
             </>
           )}
@@ -136,31 +198,27 @@ export default function Woolform() {
         <div className="file-input-wrapper">
           <input
             type="file"
-            id="woolimg"
+            id="woolimage"
             name="woolimage"
             className="form-control"
             accept="image/jpeg, image/jpg"
-            multiple
             onChange={handleImageChange}
           />
-          <div className="file-input-text">Browse</div>
+         <div className="file-input-text">Browse</div>
         </div>
-        <label className="error-message">{getErrorForField('image')}</label>
+        <label className="error-message">{validationErrors.image}</label>
       </div>
-
-      {selectedImages.length > 0 && (
+      {imageName && image && (
         <div>
-          <p>Selected Images:</p>
+          <p>Selected Image: {imageName}</p>
           <div className="image-previ">
-            {selectedImages.map((image, index) => (
-              <img key={index} src={URL.createObjectURL(image)} alt={`Image ${index}`} />
-            ))}
+            <img src={URL.createObjectURL(image)} alt="Selected Image" />
           </div>
         </div>
       )}
 
       <div className="button-group">
-        <button type="submit" onClick={handleSubmit}>
+        <button type="button" onClick={handleSubmit}>
           Submit
         </button>
         <button type="button" onClick={handleClear}>
