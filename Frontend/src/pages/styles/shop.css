@@ -12,7 +12,9 @@
 }
 .list p{
      font-size: 20px;
+     color: black;
 }
+
 .list-it.active a{
     border-bottom:2px solid black;
     border-radius:4px ;
@@ -20,7 +22,8 @@
 }
 
 .shop-container{
-    display: inline;
+    display: flex;
+    flex-direction: column;
     width:100%;
-    margin-left: 15%;
+    margin-left: 13%;
 }

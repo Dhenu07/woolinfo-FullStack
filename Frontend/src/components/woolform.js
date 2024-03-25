@@ -5,16 +5,15 @@ export default function Woolform() {
   const [formData, setFormData] = useState({
     wools: '',
     cost: '',
+    available: '',
     length: '',
     Vm: '',
     Microns: '',
     Country: '',
     Address: '',
-    Postalcode: '',
     Email: '',
     Ph: '',
     farm: '',
-    des: '',
   });
   
   const [image, setImage] = useState(null); 
@@ -45,7 +44,7 @@ export default function Woolform() {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['wools', 'cost', 'length', 'Vm', 'Microns', 'Country', 'Address', 'Postalcode', 'Email', 'Ph', 'farm', 'des'];
+    const requiredFields = ['wools', 'cost','available','length', 'Vm', 'Microns', 'Country', 'Address', 'Email', 'Ph', 'farm'];
     requiredFields.forEach(field => {
       const value = formData[field].trim();
       if (!value) {
@@ -76,17 +75,13 @@ export default function Woolform() {
     if (isNaN(formData['Vm']) || formData['Vm'] < 0 || formData['Vm'] > 100) {
       errors['Vm'] = 'VM must be a number between 0 and 100.';
     }
+    if (isNaN(formData['available']) || formData['available'] < 10 ) {
+      errors['available'] = 'Wool must be above 10 Tons';
+    }
 
     if (isNaN(formData['Microns']) || formData['Microns'] <= 0) {
       errors['Microns'] = 'Microns must be a positive number.';
     }
-
-    const postalCodeRegex = /^[0-9]{6}$/;
-    const postalCodeValue = formData['Postalcode'].trim();
-    if (!postalCodeRegex.test(postalCodeValue)) {
-      errors['Postalcode'] = 'Postal code must be a 6-digit number.';
-    }
-
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -104,12 +99,12 @@ export default function Woolform() {
       const fm=new FormData();
       fm.append("wools", formData.wools);
       fm.append("cost",formData.cost);
+      fm.append("available",formData.cost);
       fm.append("length",formData.length);
       fm.append("Vm",formData.Vm);
       fm.append("Microns",formData.Microns);
       fm.append("Country",formData.Country);
       fm.append("Address",formData.Address);
-      fm.append("Postalcode",formData.Postalcode);
       fm.append("Email",formData.Email);
       fm.append("Ph",formData.Ph);
       fm.append("farm",formData.farm);
@@ -129,16 +124,15 @@ export default function Woolform() {
     setFormData({
       wools: '',
       cost: '',
+      available: '',
       length: '',
       Vm: '',
       Microns: '',
       Country: '',
       Address: '',
-      Postalcode: '',
       Email: '',
       Ph: '',
       farm: '',
-      des: ''
     });
     setValidationErrors({});
     setImage(null); 
@@ -148,16 +142,15 @@ export default function Woolform() {
   const formFields = [
     { id: 'wools', label: 'Wool Type:', type: 'select', options: ['Merino', 'Lambswool', 'Cashmere', 'Alpaca', 'Bluefaced', 'Shetland', 'Mohair', 'Romney'] },
     { id: 'cost', label: 'Cost per Ton:', type: 'text', placeholder: 'in Rs' },
+    { id: 'available', label: 'Total Weight:', type: 'text', placeholder: 'in Tons' },
     { id: 'length', label: 'Length:', type: 'text', placeholder: 'in mm' },
     { id: 'Vm', label: 'VM:', type: 'text', placeholder: 'in %' },
     { id: 'Microns', label: 'Microns:', type: 'text', placeholder: 'microns' },
     { id: 'Country', label: 'Country:', type: 'text' },
     { id: 'Address', label: 'Address:', type: 'text' },
-    { id: 'Postalcode', label: 'PostalCode:', type: 'text', placeholder: '641 606' },
     { id: 'Email', label: 'Email:', type: 'email' },
     { id: 'Ph', label: 'Phone:', type: 'Phone' },
     { id: 'farm', label: 'Farm Name:', type: 'text' },
-    { id: 'des', label: 'Description:', type: 'text', placeholder: 'in 100words' },
   ];
 
   return (

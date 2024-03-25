@@ -5,7 +5,7 @@
     height: fit-content;
     width: fit-content;
     flex-flow:row;
-    color: white;
+    color: black;
     flex-wrap: wrap;
 }
 .news-item{
@@ -17,11 +17,6 @@
     width: 23%;
     margin: 10px;
     border-radius: 30px;
-    /* border:2px solid black; */
-    /* border-bottom:4px solid black;
-    border-left:2px solid black;
-    border-top:4px solid black;
-    border-right:2px solid black ; */
 }
 .news-item img{
     display: flex;
@@ -35,7 +30,7 @@
     font-weight: bold;
     font-style: italic;
     text-decoration:wavy;
-    color: white;
+    color: black;
 }
 .news-item p:last-child{
     display: flex;
@@ -51,7 +46,7 @@
     grid-template-areas: "a" "b";
     width: 100%;
     height: fit-content;
-    margin-left: 15%;
+    margin-left: 13%;
 }
 .head{
     grid-area: a;
@@ -78,5 +73,5 @@
     padding: 25px;
 }
 .head h1{
-    color: white;
+    color: black;
 }

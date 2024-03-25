@@ -4,7 +4,7 @@
     width: 100%;
     height: auto;
     position: relative;
-    margin-left: 15%;
+    margin-left: 13%;
   }
   .dow{
     display: flex;
@@ -18,7 +18,7 @@
     align-items: center;
     justify-content:center;
     padding: 10%;
-    color: white;
+    color: black;
   }
   .player {
     display: flex;
@@ -62,7 +62,7 @@
   }
   
   .image-quote {
-    color:whitesmoke;
+    color:black;
     font-size: 4rem;
     font-weight: bold;
     text-align: center;
@@ -83,7 +83,7 @@
   }
   .score{
     display: flex;
-    color: white;
+    color: black;
     height:100%;
     width: 25vb;
     align-items: center;
@@ -148,6 +148,7 @@
     border-radius: 15px 15px 15px 15px;
     transition: transform 0.3s ease-in-out;
     margin-bottom: 20px;
+    border-color: 5px solid black;
 }
 
 .popular .image-wrapper1 .buy-button {
@@ -170,6 +171,7 @@
   width: 250px;
   height: 250px;
   border-radius: 15px 15px 15px 15px;
+  
   transition: transform 0.3s ease-in-out;
   margin-bottom: 20px;
 }
@@ -192,7 +194,7 @@
 .popular p{
   font-size: 20px;
   font-weight: bolder;
-  color: white;
+  color: black;
 }
 .Caroimage{
   display: flex;

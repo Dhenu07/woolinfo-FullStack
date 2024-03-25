@@ -1,0 +1,94 @@
+.containeremp{
+  display: flex;
+  height:100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(223, 223, 223);
+  font-family: "Poppins", sans-serif !important;
+}
+.profileCard {
+  background-color:rgb(60, 59, 59);
+  border-radius: 10px;
+  border:2px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 0px 70px 0px 70px;
+  overflow: hidden;
+}
+
+.profileHeader {
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+  border-radius: 0px 0px 20px 20px;
+  /* background-color: black; */
+}
+
+
+.profileIcon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profileIcon i {
+  font-size: 50px;
+}
+
+.profileInfo {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.profileInfo label {
+  margin-right: 10px;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.profileInfo {
+  flex: 1;
+  border: none;
+  color:black;
+   font-size: 13px;
+  padding: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.profileInfo input[type="text"]:focus,
+.profileInfo input[type="password"]:focus,
+.profileInfo input[type="email"]:focus {
+  border-color: #FFCD00;
+  color:black;
+  font-size: 14px;
+}
+
+.socialLinks {
+  padding:10px;
+  text-align: center;
+}
+
+.socialLinks a {
+  color: black;
+  margin: 0 5px;
+  font-size: 20px;
+}
+
+.socialLinks a:hover {
+  border-color: #FFCD00;
+}
+
+#fileInput {
+  display: none;
+}

@@ -6,7 +6,7 @@
   display: flex;
   width: 100%;
   height: fit-content;
-  margin-left: 15%;
+  margin-left: 13%;
 }
 /* url(image/contact-bg.jpg */
 .contact-bg {
@@ -43,7 +43,7 @@
 .line div:nth-child(3) {
   height: 3px;
   width: 70px;
-  background: #FFCD00;
+  background: white;
   border-radius: 5px;
 }
 
@@ -55,14 +55,14 @@
 .line div:nth-child(2) {
   width: 10px;
   height: 10px;
-  background: #FFCD00;
+  background: white;
   border-radius: 50%;
 }
 
 .text {
   font-weight: 300;
   opacity: 0.9;
-  color:white;
+  color: black;
 }
 
 .contact-bg .text {
@@ -79,7 +79,7 @@
   margin: 2rem 0;
   text-align: center;
   padding: 2rem 0;
-  color: white;
+  color: black;
 }
 
 .contact-info span {
@@ -94,12 +94,13 @@
 .contact-info span .fas {
   font-size: 2rem;
   padding-bottom: 0.9rem;
-  color: #FFCD00;
+  color: black;
 }
 
 .contact-info div span:nth-child(2) {
   font-weight: 500;
   font-size: 1.1rem;
+  color: #000;
 }
 
 .contact-info .text {
@@ -171,7 +172,7 @@
   border-radius: 5px;
   line-height: 22px;
   background-color: transparent;
-  border:2px solid #FFCD00;
+  border:2px solid black;
   transition: all 0.3s;
   padding: 13px;
   margin-bottom: 15px;
@@ -179,8 +180,16 @@
   box-sizing: border-box;
   outline:0;
 }
-
-.feedback-input:focus { border:2px solid #FFCD00; }
+.feedback-input::placeholder{
+  color: #000;
+}
+#contact-form textarea::placeholder{
+  color:black;
+}
+#contact-form input::placeholder{
+  color:black;
+}
+.feedback-input:focus { border:2px solid #FFCD00;}
 
 textarea {
   height: 150px;
@@ -191,22 +200,23 @@ textarea {
 .su {
   width: 160px;
   height: 50px; 
-  background-color: white;
+  background-color: black;
   border-radius:10%;
   border:0;
   cursor:pointer;
-  color:black;
+  color:white;
   font-size:20px;
   transition: all 0.3s;
   margin-top:-4px;
   font-weight:700;
 }
-.su:hover { background: black;color: white; }
+.su:hover { background: black;color:#FFCD00; }
 
 .contact-form{
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 .feedback-input::placeholder{
   color: white;

@@ -2,6 +2,7 @@ const express = require('express');
 const multer=require('multer');
 const { connectDB, disconnectDB } = require('./db');
 const cors=require('cors');
+const path = require('path'); 
 const UserModel=require('./model/register')
 const FormModel=require('./model/sellform')
 const cookieParser = require('cookie-parser');
@@ -16,7 +17,7 @@ app.use(cors({
 connectDB();
 const storage=multer.diskStorage({
   destination:function(req,file,cb){
-    cb(null,"../frontend/uploads")
+    cb(null,"../frontend/src/uploads")
   },
   filename:function(req,file,cb){
     const userId = req.cookies.userId;
@@ -70,13 +71,13 @@ app.post('/formupload',upload.single('image'),async (req,res)=>{
   const form=await FormModel({
     userId: req.cookies.userId,
     wools: req.body.wools,
+    available: req.body.available,
     cost: req.body.cost,
     length: req.body.length,
     Vm:req.body.Vm,
     Microns:req.body.Microns,
     Country: req.body.Country,
     Address: req.body.Address,
-    PostalCode: req.body.PostalCode,
     Email: req.body.Email,
     Phone:req.body.Ph,
     farmname: req.body.farm,
@@ -94,11 +95,19 @@ app.post('/formupload',upload.single('image'),async (req,res)=>{
 })
 app.post('/upload', upload.single('image'),async(req,res)=>{
   console.log("hit the upload");
-  // console.log(req.file);
   console.log(req.cookies.userId);
   res.send("hello")
 })
-
+app.get('/forms', async (req, res) => {
+  try {
+      const forms = await FormModel.find(); 
+      res.json(forms);
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server Error' });
+  }
+});
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.listen(5000,()=>{
   console.log(`listening at port ${5000}`);
 })

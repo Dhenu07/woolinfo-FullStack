@@ -1,7 +1,8 @@
 .login-box {
   width: 80%;
   padding: 40px;
-  background-image:radial-gradient(590px at 8.2% 23.8%, rgb(37, 46, 60) 195%, rgb(187, 187, 187) 0%);
+  /* background-image:radial-gradient(590px at 8.2% 23.8%, rgb(37, 46, 60) 195%, rgb(187, 187, 187) 0%); */
+  background-color: rgb(60, 59, 59);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   border-radius: 10px;
@@ -91,7 +92,7 @@ label{
 .file-input-text {
   display: inline-block;
   padding: 10px;
-  background-color: #243b55;
+  background-color: black;
   color: #fff;
   border: 1px solid black;
   border-radius: 5px;
