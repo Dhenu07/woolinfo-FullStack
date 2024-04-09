@@ -75,13 +75,12 @@ app.post('/formupload',upload.single('image'),async (req,res)=>{
     cost: req.body.cost,
     length: req.body.length,
     Vm:req.body.Vm,
-    Microns:req.body.Microns,
     Country: req.body.Country,
     Address: req.body.Address,
     Email: req.body.Email,
     Phone:req.body.Ph,
     farmname: req.body.farm,
-    description: req.body.des,
+    description: req.body.description,
     image:req.cookies.userId+"_"+req.file.originalname
   });
   if(form){

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './compostyle/woolform.css';
 import axios from 'axios';
+
 export default function Woolform() {
   const [formData, setFormData] = useState({
     wools: '',
@@ -8,24 +9,24 @@ export default function Woolform() {
     available: '',
     length: '',
     Vm: '',
-    Microns: '',
     Country: '',
     Address: '',
     Email: '',
     Ph: '',
     farm: '',
+    description: '', // Add description field to formData
   });
-  
-  const [image, setImage] = useState(null); 
-  const [imageName, setImageName] = useState(''); // State to store the image name
+
+  const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
     if (file) {
       if (file.type === 'image/jpeg' || file.type === 'image/jpg') {
-        setImage(file); // Set the selected image
-        setImageName(file.name); // Store the image name
+        setImage(file);
+        setImageName(file.name);
       } else {
         setValidationErrors({
           image: 'Only JPEG or JPG image formats are allowed.',
@@ -44,7 +45,7 @@ export default function Woolform() {
 
   const validateForm = () => {
     const errors = {};
-    const requiredFields = ['wools', 'cost','available','length', 'Vm', 'Microns', 'Country', 'Address', 'Email', 'Ph', 'farm'];
+    const requiredFields = ['wools', 'cost', 'available', 'length', 'Vm', 'Country', 'Address', 'Email', 'Ph', 'farm', 'description'];
     requiredFields.forEach(field => {
       const value = formData[field].trim();
       if (!value) {
@@ -72,16 +73,13 @@ export default function Woolform() {
       errors['length'] = 'Length must be a positive number.';
     }
 
-    if (isNaN(formData['Vm']) || formData['Vm'] < 0 || formData['Vm'] > 100) {
-      errors['Vm'] = 'VM must be a number between 0 and 100.';
+    if (isNaN(formData['Vm']) || formData['Vm'] < 0 || formData['Vm'] > 6) {
+      errors['Vm'] = 'VM must be a number between 0 and 6.';
     }
     if (isNaN(formData['available']) || formData['available'] < 10 ) {
       errors['available'] = 'Wool must be above 10 Tons';
     }
 
-    if (isNaN(formData['Microns']) || formData['Microns'] <= 0) {
-      errors['Microns'] = 'Microns must be a positive number.';
-    }
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -92,30 +90,20 @@ export default function Woolform() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const isValid = validateForm();
-  
+
     if (isValid) {
-      const fm=new FormData();
-      fm.append("wools", formData.wools);
-      fm.append("cost",formData.cost);
-      fm.append("available",formData.cost);
-      fm.append("length",formData.length);
-      fm.append("Vm",formData.Vm);
-      fm.append("Microns",formData.Microns);
-      fm.append("Country",formData.Country);
-      fm.append("Address",formData.Address);
-      fm.append("Email",formData.Email);
-      fm.append("Ph",formData.Ph);
-      fm.append("farm",formData.farm);
-      fm.append("image",image);
-      fm.append("userId",localStorage.getItem('userId'))
-      console.log(fm);
-      console.log(image);
-      console.log(imageName);
-      axios.post('http://localhost:5000/formupload',fm)
-      .then(res=>{console.log(res)})
-      .catch(err => {console.log(err)})
+      const fm = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        fm.append(key, value);
+      });
+      fm.append("image", image);
+      fm.append("userId", localStorage.getItem('userId'));
+
+      axios.post('http://localhost:5000/formupload', fm)
+        .then(res => { console.log(res) })
+        .catch(err => { console.log(err) });
       handleClear();
     }
   };
@@ -127,30 +115,30 @@ export default function Woolform() {
       available: '',
       length: '',
       Vm: '',
-      Microns: '',
       Country: '',
       Address: '',
       Email: '',
       Ph: '',
       farm: '',
+      description: '', // Clear description field too
     });
     setValidationErrors({});
-    setImage(null); 
-    setImageName(''); 
+    setImage(null);
+    setImageName('');
   };
 
   const formFields = [
-    { id: 'wools', label: 'Wool Type:', type: 'select', options: ['Merino', 'Lambswool', 'Cashmere', 'Alpaca', 'Bluefaced', 'Shetland', 'Mohair', 'Romney'] },
+    { id: 'wools', label: 'Wool Type:', type: 'select', options: ['Select Wool  ', 'Alpaca', 'Lambswool', 'Cashmere', 'Merino', 'Bluefaced', 'Shetland', 'Mohair', 'Romney'] },
     { id: 'cost', label: 'Cost per Ton:', type: 'text', placeholder: 'in Rs' },
     { id: 'available', label: 'Total Weight:', type: 'text', placeholder: 'in Tons' },
     { id: 'length', label: 'Length:', type: 'text', placeholder: 'in mm' },
     { id: 'Vm', label: 'VM:', type: 'text', placeholder: 'in %' },
-    { id: 'Microns', label: 'Microns:', type: 'text', placeholder: 'microns' },
     { id: 'Country', label: 'Country:', type: 'text' },
     { id: 'Address', label: 'Address:', type: 'text' },
     { id: 'Email', label: 'Email:', type: 'email' },
     { id: 'Ph', label: 'Phone:', type: 'Phone' },
     { id: 'farm', label: 'Farm Name:', type: 'text' },
+    { id: 'description', label: 'Description:', type: 'textarea' }, // Add description field to formFields
   ];
 
   return (
@@ -167,6 +155,17 @@ export default function Woolform() {
                   </option>
                 ))}
               </select>
+            </>
+          ) : field.type === 'textarea' ? (
+            <>
+              <label htmlFor={field.id}>{field.label}</label>
+              <textarea
+                id={field.id}
+                name={field.id}
+                className="form-control"
+                onChange={handleInputChange}
+                value={formData[field.id]}
+              />
             </>
           ) : (
             <>
@@ -197,7 +196,7 @@ export default function Woolform() {
             accept="image/jpeg, image/jpg"
             onChange={handleImageChange}
           />
-         <div className="file-input-text">Browse</div>
+          <div className="file-input-text">Browse</div>
         </div>
         <label className="error-message">{validationErrors.image}</label>
       </div>

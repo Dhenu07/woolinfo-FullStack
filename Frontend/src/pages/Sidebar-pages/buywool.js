@@ -36,6 +36,7 @@ export default function Buywool(){
                        Email={form.Email}
                         Phone={form.Phone}
                      farmname={form.farmname}
+                     description={form.description}
                      image={form.image}
                     />
                 ))}

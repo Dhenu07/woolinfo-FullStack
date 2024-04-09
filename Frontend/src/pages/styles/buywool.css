@@ -11,12 +11,12 @@
     width: 100%;
     flex-flow:row;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     width: 85%;
-    height: 35vh;
-    margin-left:1% ;
-    
+    height: fit-content;
+    margin-left:1%;
+
 }
 .product_head{
      display:flex;

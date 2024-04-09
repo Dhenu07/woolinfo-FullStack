@@ -6,12 +6,12 @@ const Form = new mongoose.Schema({
     cost: Number,
     length: Number,
     Vm:Number,
-    Microns: Number,
     Country: String,
     Address: String,
     Email: String,
     Phone:String,
     farmname: String,
+    description: String,
     image:String,
 });
 const FormModel = mongoose.model("sell", Form);
