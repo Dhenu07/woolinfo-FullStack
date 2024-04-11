@@ -42,6 +42,7 @@ app.post('/signup',async (req,res)=>{
     res.status(404).send("no");
   }
 })
+let uid;
 app.post('/login', async (req, res) => {
   console.log(req.body);
   console.log("hit");
@@ -50,8 +51,9 @@ app.post('/login', async (req, res) => {
       if (user) {
           if (user.password === req.body.password) {
             const userId=user._id.toString();
+            uid = userId;
             console.log(userId);
-            res.cookie('userId', userId, { maxAge: 9000000000 }); 
+            res.cookie('userId', userId, { maxAge: 900000000000000 }); 
             res.status(200).send(req.userId);
           } else {
               res.status(401).send("Invalid password");
@@ -65,9 +67,7 @@ app.post('/login', async (req, res) => {
   }
 });
 app.post('/formupload',upload.single('image'),async (req,res)=>{
-  // console.log(req.body);
   console.log(req.cookies.userId);
-  // res.status(200).send(req.userId);
   const form=await FormModel({
     userId: req.cookies.userId,
     wools: req.body.wools,
@@ -99,14 +99,16 @@ app.post('/upload', upload.single('image'),async(req,res)=>{
 })
 app.get('/forms', async (req, res) => {
   try {
-      const forms = await FormModel.find(); 
-      res.json(forms);
+    console.log(uid);
+    const forms = await FormModel.find({ userId: { $ne: uid } });
+    res.json(forms);
+    console.log(forms);
   } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Server Error' });
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
   }
 });
-// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.listen(5000,()=>{
   console.log(`listening at port ${5000}`);
 })

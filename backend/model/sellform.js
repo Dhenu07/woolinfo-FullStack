@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Form = new mongoose.Schema({
-    userid: String,
+    userId: String,
     wools: String,
     available: Number,
     cost: Number,
@@ -13,6 +13,10 @@ const Form = new mongoose.Schema({
     farmname: String,
     description: String,
     image:String,
+    curr_date: {
+        type: Date,
+        default: Date.now
+    }
 });
 const FormModel = mongoose.model("sell", Form);
 module.exports = FormModel;
