@@ -1,3 +1,55 @@
+.menu-container {
+  position: relative;
+}
+
+.account-info-more {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.account-info-more svg {
+  width: 26px;
+  height: 26px;
+  transition: opacity 0.3s ease;
+}
+
+.account-info-more:hover {
+  opacity: 0.7;
+}
+
+.popup-menu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popup-menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  text-align: left;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.popup-menu button:hover {
+  background-color: #FFCD00;
+  color: black;
+  border: 1px solid #ccc;
+ 
+}
+
+
+
 .sidebar{
     max-width: 13%;
     background-color:black;

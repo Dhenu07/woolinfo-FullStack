@@ -1,9 +1,29 @@
-import React from "react";
+import {React,useState,useEffect} from "react";
 import './pages/styles/dashboard.css';
 import logo from './images/logo.png';
 import pic from './images/Dsd.JPG';
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+
 export default function SideBar({activeItem}){
+  const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log("Logout clicked!"); 
+    navigate("/login");
+  };
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const [name, setName] = useState([]);
+  useEffect(() => {
+      fetch('http://localhost:5000/getname')
+          .then(response => response.json())
+          .then(data => setName(data))
+          .catch(error => console.error('Error fetching forms:', error));
+  }, []);
     return(
         <div className="sidebar">
         <div className="sidebar-header">
@@ -55,12 +75,23 @@ export default function SideBar({activeItem}){
         <div className="account-info">
         <Link to="/profile">
           <div className="account-info-picture">
-            <img src={pic} alt="Account"/>
+            <img src={(name.image==null)?"https://i.pinimg.com/564x/b0/4b/84/b04b840490ada8ad48d9336a57b2a7b2.jpg":name.image} alt="Account"/>
           </div></Link>
-          <div className="account-info-name">Dhenu D S</div>
-          <button className="account-info-more">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" color="#FFCD00"height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal" id="feather"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-          </button>
+          <div className="account-info-name">{name.name}</div>
+          <div className="menu-container">
+          {showMenu && (
+        <div className="popup-menu">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      )}
+      <button type="button" className="account-info-more" onClick={toggleMenu}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" color="#FFCD00" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="feather feather-more-horizontal" id="feather">
+          <circle cx="12" cy="12" r="1"/>
+          <circle cx="19" cy="12" r="1"/>
+          <circle cx="5" cy="12" r="1"/>
+        </svg>
+      </button>
+    </div>
         </div>
       </div>
     );
