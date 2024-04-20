@@ -12,6 +12,8 @@ import Shop from './pages/Sidebar-pages/shop';
 import Profile from './pages/Sidebar-pages/profile';
 import SellWool from './pages/Sidebar-pages/sellwool';
 import Buywool from './pages/Sidebar-pages/buywool';
+import SellHistory from './components/SellHistory';
+import BuyHistory from './components/BuyHistory';
 export default function App() {
   return (
     <div className="App">
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/shop/sellwool" element={<SellWool />} />
         <Route path="/shop/buywool" element={<Buywool />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/sellhistory" element={<SellHistory/>} />
+        <Route path="/profile/buyhistory" element={<BuyHistory/>} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/news" element={<News />} />

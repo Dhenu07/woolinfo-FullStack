@@ -6,7 +6,6 @@ import WoolBuyList from "../../components/woolbuylist";
 import { useState,useEffect } from "react";
 export default function Buywool(){
     const [forms, setForms] = useState([]);
-    // const [image1, setImage] = useState();
     useEffect(() => {
         fetch('http://localhost:5000/forms')
             .then(response => response.json())

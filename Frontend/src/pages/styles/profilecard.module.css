@@ -162,5 +162,15 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  
+}
+.selldeals{
+  display: flex;
+  background-color: rgb(223, 223, 223);
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.selldeals p{
+  font-size: 20px;
+  color: black;
 }

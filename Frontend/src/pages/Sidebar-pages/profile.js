@@ -4,7 +4,7 @@ import SideBar from "../../sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState("https://i.pinimg.com/736x/85/d6/4e/85d64ede4e32839466d60cbc191130df.jpg");
   const [showGallery, setShowGallery] = useState(false);
@@ -16,6 +16,10 @@ export default function Profile() {
   const [bio, setBio] = useState([]);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false); // State for success popup
+  const [activeItem, setActiveItem] = useState("1");
+    const handleItemClick = (id) => {
+        setActiveItem(id);
+    };
 
   useEffect(() => {
     fetch('http://localhost:5000/getbio')
@@ -128,6 +132,18 @@ export default function Profile() {
           </div>
         </div>
       )}
+      <div className={styles.selldeals}>
+                    <div className={`list-it ${activeItem === "1" ? "active" : ""}`}>
+                        <Link to='/profile/buyhistory' onClick={() => handleItemClick("1")}>
+                            <p>Buy History</p>
+                        </Link>
+                    </div>
+                    <div className={`list-it ${activeItem === "2" ? "active" : ""}`}>
+                        <Link to='/profile/sellhistory' onClick={() => handleItemClick("2")}>
+                            <p>Sell History</p>
+                        </Link>
+                    </div>
+                </div>
     </>
   );
 }

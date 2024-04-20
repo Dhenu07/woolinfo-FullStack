@@ -1,0 +1,9 @@
+.buyhistory{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(223, 223, 223);
+}
+.buyhistory h1{
+    color: black;
+}

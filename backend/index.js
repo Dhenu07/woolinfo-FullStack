@@ -147,7 +147,17 @@ app.post('/getupdate', async (req, res) => {
   else{
     res.status(404).send("no");                         
   }
-
+})
+app.get('/sellhistory', async (req, res) => {
+  try {
+    console.log(uid);
+    const forms = await FormModel.find({ userId: { $eq: uid } });
+    res.json(forms);
+    console.log(forms);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
 })
 
 app.listen(5000,()=>{
