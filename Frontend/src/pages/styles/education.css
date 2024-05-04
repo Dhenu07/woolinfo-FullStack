@@ -146,6 +146,10 @@
     align-items: center;
     justify-content: center;
 }
+#start:hover{
+    color: #FFCD00;
+    background-color: black;
+}
 .education{
     height: fit-content;
     width: fit-content;
@@ -202,16 +206,14 @@
     border-radius: 8px;
 }
 
-.close-btn {
+#close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     background: #ff0000;
     color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 2px;
+    height: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,6 +222,32 @@
     transition: background 0.3s ease;
 }
 
-.close-btn:hover {
+#close-btn:hover {
     background: #cc0000;
+}
+
+.anounce{
+    color: red;
+}
+
+#certificate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00ff00;
+    color:black;
+   
+}
+#certificate:hover{
+    background-color: black;
+    color: #00ff00;
+}
+
+.certi{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3%;
 }

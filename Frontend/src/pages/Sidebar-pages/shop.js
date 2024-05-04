@@ -17,8 +17,7 @@ export default function Shop() {
                 <h1>Shop</h1>
                 <div className="list">
                     <div className={`list-it ${activeItem === "1" ? "active" : ""}`}>
-                        <Link to='/shop/buywool' onClick={() => handleItemClick("1")}>
-                            <p>Buy Wool</p>
+                        <Link to='/shop/buywool' onClick={() => handleItemClick("1")}>                            <p>Buy Wool</p>
                         </Link>
                     </div>
                     <div className={`list-it ${activeItem === "2" ? "active" : ""}`}>

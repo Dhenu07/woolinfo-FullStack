@@ -125,3 +125,27 @@
   margin: 0 10px;
   font-size: 18px;
 }
+/* 
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.popup.show {
+  display: block;
+}
+
+.popup.success {
+  background-color: #4CAF50;
+}
+
+.popup.error {
+  background-color: #f44336;
+} */

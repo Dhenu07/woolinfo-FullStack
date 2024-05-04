@@ -93,16 +93,11 @@
 .socialLinks a:hover {
   border-color: #FFCD00;
 }
-/* .saveButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+
 #fileInput {
   display: none;
 }
 
-/* YourComponent.css */
 
 .modal {
   display: block;

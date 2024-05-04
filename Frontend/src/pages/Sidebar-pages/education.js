@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../styles/education.css';
 import indus from '../../images/industry.jpg';
 import mod1 from "../../images/mod1.jpg";
@@ -8,11 +8,18 @@ import mod4 from "../../images/mod4.jpg";
 import mod5 from "../../images/mod5.jpg";
 import mod6 from "../../images/mod6.jpg";
 import SideBar from "../../sidebar";
-
+// import axios from "axios";
+const PNG_FILE_URL='http://localhost:3000/certificate.png';
 export default function Education() {
     const [activeItem, setActiveItem] = useState("1");
     const [showVideo, setShowVideo] = useState(false); 
     const [videoSrc, setVideoSrc] = useState(null);
+    const [isChecked1, setIsChecked1] = useState(false);
+    const [isChecked2, setIsChecked2] = useState(false);
+    const [isChecked3, setIsChecked3] = useState(false);
+    const [isChecked4, setIsChecked4] = useState(false);
+    const [isChecked5, setIsChecked5] = useState(false);
+    const [isChecked6, setIsChecked6] = useState(false);
     const handleItemClick = (id) => {
         setActiveItem(id);
     };
@@ -27,13 +34,45 @@ export default function Education() {
         setVideoSrc(src);
         setShowVideo(true); 
     };
-
+    
     const handleCloseVideo = () => {
         setShowVideo(false); 
     };
 
     const videoRef = useRef(null);
+    const handleCheckboxChange1 = () => {
+        setIsChecked1(!isChecked1);
+      };
     
+      const handleCheckboxChange2 = () => {
+        setIsChecked2(!isChecked2);
+      };
+    const handleCheckboxChange3 = () => {
+        setIsChecked3(!isChecked3);
+      };
+    
+      const handleCheckboxChange4 = () => {
+        setIsChecked4(!isChecked4);
+      };
+    const handleCheckboxChange5 = () => {
+        setIsChecked5(!isChecked5);
+      };
+    
+      const handleCheckboxChange6 = () => {
+        setIsChecked6(!isChecked6);
+      };
+    //   const downloadCheckbox = () => {
+    //     alert("Finish all the modules");
+    //   }
+      const downloadFileAtURL=(url)=>{
+        const filename=url.split('/').pop();
+        const aTag=document.createElement('a');
+        aTag.href=url;
+        aTag.setAttribute('download',filename);
+        document.body.appendChild(aTag);
+        aTag.click();
+        aTag.remove();
+       }
     return (
         <div className="app-container">
             <SideBar activeItem="4" />
@@ -121,6 +160,7 @@ export default function Education() {
                     <h3><b>MODULES : 6</b></h3>
                 </div>
                 <div className="coursecards">
+                    <h3 className="anounce">Note:Complete the modules ,mark the check boxes and get your Certificate!</h3>
                     <div className="innercard">
                         <div className="imgflex">
                             <img src={mod1} alt="sheep"/>
@@ -133,6 +173,11 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>15 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/module1.mp4')}><h3>BEGIN</h3></button>
+                            <input type="checkbox"
+                             checked={isChecked1} 
+                             onChange={handleCheckboxChange1} 
+                             className="check"
+                            ></input>
                         </div>   
                     </div>
                     <div className="innercard">
@@ -147,6 +192,10 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>1 Hour 23 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/Module2.mp4')}><h3>BEGIN</h3></button>
+                            <input type="checkbox"
+                             checked={isChecked2} 
+                             onChange={handleCheckboxChange2}
+                             className="check" ></input>
                         </div>   
                     </div>
                     <div className="innercard">
@@ -161,6 +210,11 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>59 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/Module3.mp4')}><h3>BEGIN</h3></button>
+                            <input type="checkbox"
+                             checked={isChecked3} 
+                             onChange={handleCheckboxChange3} 
+                             className="check"
+                            ></input>
                         </div>   
                     </div>
                     <div className="innercard">
@@ -175,6 +229,11 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>1 Hour 5 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/Module4.mp4')}><h3>BEGIN</h3></button>
+                            <input type="checkbox"
+                             checked={isChecked4} 
+                             onChange={handleCheckboxChange4} 
+                             className="check"
+                            ></input>
                         </div>   
                     </div>
                     <div className="innercard">
@@ -189,7 +248,11 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>25 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/Module5.mp4')}><h3>BEGIN</h3></button>
-                        </div>   
+                            <input type="checkbox"
+                             checked={isChecked5} 
+                             onChange={handleCheckboxChange5} 
+                             className="check"
+                             ></input>                        </div>   
                     </div>
                     <div className="innercard">
                         <div className="imgflex">
@@ -203,9 +266,16 @@ export default function Education() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-activity"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
                             <h4>1 Hour 30 Minutes</h4><br/>
                             <button id='start' type="button" onClick={() => handleBeginClick(process.env.PUBLIC_URL + '/Videos/Module6.mp4')}><h3>BEGIN</h3></button>
+                            <input type="checkbox"
+                             checked={isChecked6} 
+                             onChange={handleCheckboxChange6} 
+                             className="check"
+                            ></input>
                         </div>   
                     </div>
-                    
+                    <div className="certi">
+                    {isChecked1&&isChecked2&&isChecked3&&isChecked4&&isChecked5&&isChecked6&&(<button id="certificate" onClick={()=>downloadFileAtURL(PNG_FILE_URL)}>DOWNLOAD YOUR CERTIFICATE</button>)}
+                    </div>
                 </div>
             </div>
             {showVideo && (
@@ -218,7 +288,7 @@ export default function Education() {
                             autoPlay
                             onEnded={handleVideoEnd}
                         />
-                        <button className="close-btn" onClick={() => setShowVideo(false)}>Close</button>
+                        <button id="close-btn" onClick={() => setShowVideo(false)}>X</button>
                     </div>
                 </div>
             )}

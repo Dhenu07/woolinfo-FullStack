@@ -1,6 +1,38 @@
-.cart{
+.cart {
     display: flex;
+    width: 100% !important;
+    flex-direction: column;
+    height: 100%;
+    padding-left: 15%;
+}
+.inner-cart{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: fit-content;
-    padding-left: 15%;
+}
+.finaldetails{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+#po:hover{
+    color:black;
+    background-color: rgb(11, 232, 11);
+}
+#po{
+    color:rgb(11, 232, 11);
+    background-color:black ;
+}
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
 }

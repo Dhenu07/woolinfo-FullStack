@@ -11,7 +11,7 @@ import ema from '../images/mail.svg';
 import ph from '../images/phone.svg';
 import farm from '../images/farm.svg';
 
-const WoolBuyList = ({ wools, available, cost, length, Vm, Country, Address, Email, Phone, farmname, image, description }) => {
+const WoolBuyList = ({ item,wools, available, cost, length, Vm, Country, Address, Email, Phone, farmname, image, description,curr_date }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [selectedWool, setSelectedWool] = useState(null);
 
@@ -60,7 +60,7 @@ const WoolBuyList = ({ wools, available, cost, length, Vm, Country, Address, Ema
           <p>{farmname}</p>
         </div> */}
       </div>
-      <button type='button' onClick={() => handleShowMore({ wools, available, cost, length, Vm, Country, Address, Email, Phone, farmname, image, description })}>See More</button>
+      <button type='button' onClick={() => handleShowMore({ item,wools, available, cost, length, Vm, Country, Address, Email, Phone, farmname, image, description,curr_date })}>See More</button>
 
       {isPopupVisible && <WoolBuyPopup wool={selectedWool} onClose={handleClosePopup} />}
     </div>

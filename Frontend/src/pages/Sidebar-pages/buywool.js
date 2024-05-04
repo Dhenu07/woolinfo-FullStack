@@ -12,7 +12,6 @@ export default function Buywool(){
             .then(data => setForms(data))
             .catch(error => console.error('Error fetching forms:', error));
     }, []);
-    // console.log(image1);
     return(
         <><Shop activeItem="1"></Shop>
         <div className="product_list">
@@ -22,7 +21,7 @@ export default function Buywool(){
          <div className="product_inlist">
                 {forms.map(form => (
                     <WoolBuyList
-                    //    key={form.id}
+                        item={form._id}
                          wools={form.wools}
                          available={form.available}
                          cost={form.cost}
@@ -37,6 +36,7 @@ export default function Buywool(){
                      farmname={form.farmname}
                      description={form.description}
                      image={form.image}
+                     curr_date={form.curr_date}
                     />
                 ))}
          </div>
