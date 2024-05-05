@@ -30,7 +30,9 @@ export default function Cart() {
 
     const buyItem = async () => {
         try {
-            await axios.post('http://localhost:5000/cart/buy');
+            cartitem.forEach(async item=>{
+                const res=await axios.post('http://localhost:5000/cart/buy');
+                return res.data;  })
             setSuccess(true); 
             setTimeout(() => {
                 setSuccess(false); 

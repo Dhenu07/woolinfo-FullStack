@@ -25,7 +25,7 @@
 .innerlis{
     display: flex;
     width: 65%;
-    height: 30vh;
+    height: 33vh;
     margin: 4px;
     border: 3px solid black;
     border-radius: 15px;
@@ -33,11 +33,10 @@
 .innerlis img{
     display: flex;
     width: 27%;
-    height: fit-content;
+    height: 30vh;
     padding: 5px;
     margin: 5px;
-    border:3px solid black;
-    border-radius:7px ;
+    border-radius:15px ;
 }
 .innerlis1{
     display: flex;

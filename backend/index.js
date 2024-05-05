@@ -161,7 +161,31 @@ app.get('/sellhistory', async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 })
-
+app.get('/buyhistory', async (req, res) => {
+  try{
+    let finaljson=[];
+    const item=await CartModel.find({userID: { $eq: uid},status: { $eq:true}});
+    for(const his of item){
+      const details=await FormModel.findById(his.itemId);
+      finaljson.push({
+        wool:details.wools,
+        cost:details.cost,
+        length:details.length,
+        vm:details.Vm,
+        farmname:details.farmname,
+        image:details.image,
+        quantity:his.quantity,
+        date:his.curr_date
+      });
+    }
+    console.log(finaljson);
+    res.json(finaljson);
+  }
+  catch(error){
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+})
 //backend for cart
 app.get('/cart', async (req, res) => {
   try {
